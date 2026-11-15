@@ -18,15 +18,20 @@ default = []
 # Exposes `borg::testing::*` (FakeLlmClient, ScriptedAgent, …) so
 # consumers can test borg pipelines without re-implementing fakes.
 testing = []
+# `borg::UsdBudget`: a `Budget` that books real USD via the `llm-budget`
+# crate's price table and hard cap, instead of counting tokens.
+usd-budget = ["dep:llm-budget", "dep:thiserror"]
 
 [dependencies]
 async-stream.workspace = true
 async-trait.workspace = true
 borg-macros.workspace = true
 futures.workspace = true
+llm-budget = { version = "0.3", optional = true }
 parking_lot.workspace = true
 serde.workspace = true
 serde_json.workspace = true
+thiserror = { workspace = true, optional = true }
 tokio.workspace = true
 tokio-util.workspace = true
 tracing.workspace = true

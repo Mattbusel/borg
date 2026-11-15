@@ -159,6 +159,8 @@ pub mod scheduled;
 pub mod streaming;
 pub mod suspend;
 pub mod tools;
+#[cfg(feature = "usd-budget")]
+pub mod usd_budget;
 
 mod agent;
 mod composition;
@@ -218,6 +220,8 @@ pub use agent::{BorgAgent, BoxedAgent, Provider};
 pub use budget::{
     in_memory_budget, sub_budget, Budget, BudgetVerdict, InMemoryBudget, SubBudget, TokenUsage,
 };
+#[cfg(feature = "usd-budget")]
+pub use usd_budget::{UsdBudget, UsdBudgetError, MICRO_USD};
 pub use checkpoint::{
     composition_fingerprint, CheckpointPolicy, CheckpointStore, InMemoryCheckpointStore, Snapshot,
     SNAPSHOT_SCHEMA_VERSION,
